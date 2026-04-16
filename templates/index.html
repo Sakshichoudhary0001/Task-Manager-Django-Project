@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager API</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Task Manager API</p>
+                <h1>Plan, ship, and track every task from one lightweight dashboard.</h1>
+                <p class="hero-text">
+                    This frontend is powered by Django, Django REST Framework, JWT authentication,
+                    and a clean HTML, CSS, and JavaScript interface.
+                </p>
+            </div>
+            <div class="hero-card">
+                <p class="hero-card-title">Sample API endpoints</p>
+                <ul class="endpoint-list">
+                    <li><code>/api/register/</code></li>
+                    <li><code>/api/login/</code></li>
+                    <li><code>/api/logout/</code></li>
+                    <li><code>/api/tasks/</code></li>
+                </ul>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <section class="panel auth-panel">
+                <div class="panel-heading">
+                    <p class="section-label">Authentication</p>
+                    <h2>Create an account or sign in</h2>
+                </div>
+
+                <div id="message-box" class="message hidden"></div>
+
+                <div class="auth-forms">
+                    <form id="register-form" class="card form-card">
+                        <h3>Register</h3>
+                        <label>
+                            Username
+                            <input type="text" name="username" placeholder="Choose a username" required>
+                        </label>
+                        <label>
+                            Email
+                            <input type="email" name="email" placeholder="you@example.com">
+                        </label>
+                        <label>
+                            Password
+                            <input type="password" name="password" placeholder="Create a strong password" required>
+                        </label>
+                        <button type="submit" class="primary-button">Create account</button>
+                    </form>
+
+                    <form id="login-form" class="card form-card">
+                        <h3>Login</h3>
+                        <label>
+                            Username
+                            <input type="text" name="username" placeholder="Enter your username" required>
+                        </label>
+                        <label>
+                            Password
+                            <input type="password" name="password" placeholder="Enter your password" required>
+                        </label>
+                        <button type="submit" class="primary-button">Login</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="panel workspace-panel">
+                <div class="panel-heading">
+                    <p class="section-label">Workspace</p>
+                    <h2>Your personal task board</h2>
+                </div>
+
+                <div class="toolbar">
+                    <div>
+                        <p id="auth-status" class="status-line">You are not logged in.</p>
+                    </div>
+                    <div class="toolbar-actions">
+                        <label class="filter-control">
+                            Status
+                            <select id="status-filter">
+                                <option value="">All</option>
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </label>
+                        <button id="refresh-button" class="secondary-button" type="button">Refresh</button>
+                        <button id="logout-button" class="secondary-button" type="button">Logout</button>
+                    </div>
+                </div>
+
+                <form id="task-form" class="card task-form">
+                    <div class="task-form-header">
+                        <h3 id="task-form-title">Create a task</h3>
+                        <button id="cancel-edit-button" class="text-button hidden" type="button">Cancel edit</button>
+                    </div>
+                    <label>
+                        Title
+                        <input id="task-title" type="text" name="title" placeholder="What needs to get done?" required>
+                    </label>
+                    <label>
+                        Description
+                        <textarea id="task-description" name="description" rows="4" placeholder="Add a useful description"></textarea>
+                    </label>
+                    <label>
+                        Status
+                        <select id="task-status" name="status">
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </label>
+                    <button id="task-submit-button" type="submit" class="primary-button">Save task</button>
+                </form>
+
+                <section class="card tasks-card">
+                    <div class="tasks-header">
+                        <h3>Tasks</h3>
+                        <p id="task-summary">Login to load your tasks.</p>
+                    </div>
+                    <div id="task-list" class="task-list empty-state">
+                        Your tasks will appear here after login.
+                    </div>
+                    <div id="pagination" class="pagination hidden">
+                        <button id="previous-page" class="secondary-button" type="button">Previous</button>
+                        <span id="pagination-status">Page 1</span>
+                        <button id="next-page" class="secondary-button" type="button">Next</button>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
