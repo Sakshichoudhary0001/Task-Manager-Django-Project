@@ -1,6 +1,6 @@
 # Task Manager API
 
-Task Manager API is a full-stack Django project that combines a Django REST Framework backend with a lightweight HTML, CSS, and JavaScript frontend.
+A full-stack Django project with a Django REST Framework backend and a lightweight HTML, CSS, and JavaScript frontend.
 
 ## Features
 
@@ -8,63 +8,76 @@ Task Manager API is a full-stack Django project that combines a Django REST Fram
 - Task CRUD APIs scoped to the logged-in user
 - Owner-only update and delete protection
 - Status filtering for `pending` and `completed` tasks
-- Page-number pagination for task listing
-- SQLite database for simple local development
-- Browser-based frontend served directly by Django
+- Page-number pagination for task lists
+- SQLite database for local development
+- Frontend served by Django templates and static assets
 
-## Project Structure
+## Repository Structure
 
 ```text
 Task Manager Django Project/
-|-- manage.py
-|-- db.sqlite3
-|-- requirements.txt
-|-- README.md
-|-- task_manager_api/
-|-- tasks/
-|-- templates/
-`-- static/
+├── manage.py
+├── README.md
+├── requirements.txt
+├── .gitignore
+├── db.sqlite3
+├── task_manager_api/
+├── tasks/
+├── templates/
+└── static/
 ```
 
-## Installation
+## Requirements
 
-1. Make sure Python 3.14 or later is installed.
-2. Install project dependencies:
+- Python 3.14+
+- Django 6.0+
+- Django REST Framework
+- Django Filter
+- djangorestframework-simplejwt
 
-```bash
-pip install --user -r requirements.txt
-```
+## Setup
 
-Optional virtual environment:
+1. Create and activate a virtual environment:
 
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
+```
+
+2. Install project dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-## Run The Project
-
-1. Create database tables:
+3. Create the database tables:
 
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-2. Start the development server:
+4. Start the development server:
 
 ```bash
 python manage.py runserver
 ```
 
-3. Open the app in your browser:
+5. Open the app in your browser:
 
 ```text
 http://127.0.0.1:8000/
 ```
 
-## Sample API Endpoints
+## Testing
+
+Run the built-in test suite:
+
+```bash
+python manage.py test
+```
+
+## API Endpoints
 
 - `POST /api/register/`
 - `POST /api/login/`
@@ -76,7 +89,7 @@ http://127.0.0.1:8000/
 - `PATCH /api/tasks/<id>/`
 - `DELETE /api/tasks/<id>/`
 
-## Example Request Payloads
+## Example Payloads
 
 Register:
 
@@ -106,6 +119,12 @@ Create task:
   "status": "pending"
 }
 ```
+
+## Notes
+
+- The project uses `db.sqlite3` for local development.
+- Do not commit secret keys or environment files in production.
+- For production, set `DEBUG = False`, provide a secure `SECRET_KEY`, and use a production database.
 *** Add File: d:\Task Manager Django Project\.gitignore
 .venv/
 __pycache__/
