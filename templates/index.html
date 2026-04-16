@@ -19,11 +19,22 @@
                 </p>
             </div>
 
+            <section class="panel auth-panel">
+                <div class="panel-heading">
+                    <p class="section-label">Authentication</p>
+                    <h2>Join the workspace or sign in</h2>
+                </div>
+
+                <p class="auth-intro">Secure access with JWT tokens, and keep your tasks synced to your own account.</p>
+
                 <div id="message-box" class="message hidden"></div>
 
                 <div class="auth-forms">
-                    <form id="register-form" class="card form-card">
-                        <h3>Register</h3>
+                    <form id="register-form" class="card auth-card">
+                        <div class="auth-card-header">
+                            <h3>Create account</h3>
+                            <p>Register to start managing your tasks right away.</p>
+                        </div>
                         <label>
                             Username
                             <input type="text" name="username" placeholder="Choose a username" required>
@@ -39,8 +50,11 @@
                         <button type="submit" class="primary-button">Create account</button>
                     </form>
 
-                    <form id="login-form" class="card form-card">
-                        <h3>Login</h3>
+                    <form id="login-form" class="card auth-card login-card">
+                        <div class="auth-card-header">
+                            <h3>Login</h3>
+                            <p>Already have an account? Sign in to manage your tasks.</p>
+                        </div>
                         <label>
                             Username
                             <input type="text" name="username" placeholder="Enter your username" required>
