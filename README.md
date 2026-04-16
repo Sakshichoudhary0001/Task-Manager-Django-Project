@@ -82,7 +82,6 @@ python manage.py test
 - `POST /api/register/`
 - `POST /api/login/`
 - `POST /api/logout/`
-- `POST /api/token/refresh/`
 - `GET /api/tasks/`
 - `POST /api/tasks/`
 - `GET /api/tasks/<id>/`
