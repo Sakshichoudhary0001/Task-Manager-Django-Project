@@ -129,3 +129,5 @@ Create task:
 __pycache__/
 *.py[cod]
 db.sqlite3
+
+http://127.0.0.1:8000/
